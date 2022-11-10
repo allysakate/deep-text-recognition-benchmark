@@ -1,5 +1,6 @@
 '''
 Usage:
+python train.py --Transformation TPS --FeatureExtraction ResNet --SequenceModeling BiLSTM --Prediction Attn --data_filtering_off
 python train.py  --Prediction Attn --saved_model checkpoints/TPS-ResNet-BiLSTM-Attn-case-sensitive_15000.pth --FT --sensitive
 '''
 import os
@@ -233,10 +234,10 @@ if __name__ == '__main__':
     parser.add_argument('--valid_data', default='data/Text_Recog/Text_Recog_test', help='path to validation dataset')
     parser.add_argument('--manualSeed', type=int, default=12, help='for random seed setting')
     parser.add_argument('--workers', type=int, help='number of data loading workers', default=4)
-    parser.add_argument('--batch_size', type=int, default=20, help='input batch size')
-    parser.add_argument('--num_iter', type=int, default=20000, help='number of iterations to train for')
-    parser.add_argument('--valInterval', type=int, default=20, help='Interval between each validation')
-    parser.add_argument('--saved_model', default='checkpoints/TPS-ResNet-BiLSTM-CTC_15000.pth', help="path to model to continue training")
+    parser.add_argument('--batch_size', type=int, default=1, help='input batch size')
+    parser.add_argument('--num_iter', type=int, default=10, help='number of iterations to train for')
+    parser.add_argument('--valInterval', type=int, default=1, help='Interval between each validation')
+    parser.add_argument('--saved_model', default='', help="path to model to continue training")
     parser.add_argument('--FT', action='store_true', help='whether to do fine-tuning')
     parser.add_argument('--adam', action='store_true', help='Whether to use adam (default is Adadelta)')
     parser.add_argument('--lr', type=float, default=1, help='learning rate, default=1.0 for Adadelta')
